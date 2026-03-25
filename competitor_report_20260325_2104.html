@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Phân Tích Đối Thủ Cạnh Tranh - 25/03/2026 21:04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            color: #2d3748;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .header h1 { font-size: 2.8em; margin-bottom: 10px; position: relative; z-index:1; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .header p { font-size: 1.15em; opacity: 0.9; position: relative; z-index:1; }
+        .header .badge {
+            display: inline-block; background: rgba(255,255,255,0.2);
+            padding: 5px 15px; border-radius: 20px; margin-top: 10px;
+            font-size: 0.9em; position: relative; z-index:1;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        .stat-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .stat-box:hover { transform: translateY(-3px); }
+        .stat-box:nth-child(2) { border-top-color: #764ba2; }
+        .stat-box:nth-child(3) { border-top-color: #f093fb; }
+        .stat-box:nth-child(4) { border-top-color: #4fd1c5; }
+        .stat-box:nth-child(5) { border-top-color: #fc8181; }
+        .stat-value {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .stat-box:nth-child(2) .stat-value { color: #764ba2; }
+        .stat-box:nth-child(3) .stat-value { color: #f093fb; }
+        .stat-box:nth-child(4) .stat-value { color: #4fd1c5; }
+        .stat-box:nth-child(5) .stat-value { color: #fc8181; }
+        .stat-label { color: #718096; font-size: 0.95em; font-weight: 500; }
+        .stat-detail { color: #a0aec0; font-size: 0.8em; margin-top: 5px; }
+
+        .section { padding: 35px 40px; }
+        .section h2 {
+            font-size: 1.6em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+        .section h3 {
+            font-size: 1.2em;
+            color: #4a5568;
+            margin: 20px 0 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.92em;
+        }
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        tr:hover td { background: #f7fafc; }
+
+        .insight-box {
+            background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+            border-left: 4px solid #4fd1c5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .insight-box h4 { color: #234e52; margin-bottom: 8px; }
+        .insight-box p { color: #2c7a7b; line-height: 1.6; }
+
+        .footer {
+            background: #1a202c;
+            color: #a0aec0;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .section { padding: 20px; }
+            table { font-size: 0.8em; }
+            th, td { padding: 8px 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Báo Cáo Phân Tích Đối Thủ Cạnh Tranh</h1>
+            <p>Comprehensive Competitor Analysis Report</p>
+            <div class="badge">Ngày tạo: 25/03/2026 21:04 | Số domain: 5 | Nguồn: Semrush & Ahrefs</div>
+        </div>
+
+        <!-- OVERVIEW STATS -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value">57.3M</div>
+                <div class="stat-label">Tổng Organic Traffic</div>
+                <div class="stat-detail">57,290,000 lượt/tháng</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">3.4M</div>
+                <div class="stat-label">Tổng Organic Keywords</div>
+                <div class="stat-detail">3,386,130 từ khóa</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">56.0M</div>
+                <div class="stat-label">Tổng Backlinks</div>
+                <div class="stat-detail">56,000,000 liên kết</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">76</div>
+                <div class="stat-label">Domain Authority TB</div>
+                <div class="stat-detail">Trung bình 5 domains</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">114.4K</div>
+                <div class="stat-label">Tổng Referring Domains</div>
+                <div class="stat-detail">114,360 tên miền</div>
+            </div>
+        </div>
+
+        <!-- DETAILED TABLE -->
+        <div class="section">
+            <h2>Chi Tiết Phân Tích Từng Domain</h2>
+            <div style="overflow-x:auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Domain</th>
+                        <th>Organic Traffic</th>
+                        <th>Keywords</th>
+                        <th>Paid Traffic</th>
+                        <th>Backlinks</th>
+                        <th>Ref. Domains</th>
+                        <th>DA</th>
+                        <th>Xu hướng (6 tháng)</th>
+                        <th>Thay đổi</th>
+                        <th>Market Share</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td><strong>1</strong></td>
+            <td>
+                <div style="font-weight:600;color:#2d3748">shopee.vn</div>
+                <div style="font-size:0.8em;color:#718096">E-commerce</div>
+            </td>
+            <td><strong>22.9M</strong></td>
+            <td>1.2M</td>
+            <td>5.7M</td>
+            <td>25.8M</td>
+            <td>45.7K</td>
+            <td><span style="background:#28a745;color:white;padding:3px 10px;border-radius:12px;font-weight:bold">88</span></td>
+            <td style="text-align:center"><svg width="120" height="40" viewBox="0 0 120 40"><polyline fill="none" stroke="#28a745" stroke-width="2" points="0.0,40.0 24.0,33.6 48.0,25.5 72.0,17.3 96.0,8.2 120.0,0.0"/></svg></td>
+            <td><span style="color:#28a745;font-weight:bold">↑ 23.8%</span></td>
+            <td>
+                <div style="background:#e2e8f0;border-radius:10px;height:20px;overflow:hidden">
+                    <div style="background:linear-gradient(90deg,#667eea,#764ba2);height:100%;width:40.0%;border-radius:10px;min-width:2%"></div>
+                </div>
+                <div style="font-size:0.8em;text-align:center;margin-top:2px">40.0%</div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>2</strong></td>
+            <td>
+                <div style="font-weight:600;color:#2d3748">tiki.vn</div>
+                <div style="font-size:0.8em;color:#718096">E-commerce</div>
+            </td>
+            <td><strong>15.4M</strong></td>
+            <td>892.3K</td>
+            <td>2.1M</td>
+            <td>12.5M</td>
+            <td>28.4K</td>
+            <td><span style="background:#28a745;color:white;padding:3px 10px;border-radius:12px;font-weight:bold">82</span></td>
+            <td style="text-align:center"><svg width="120" height="40" viewBox="0 0 120 40"><polyline fill="none" stroke="#28a745" stroke-width="2" points="0.0,40.0 24.0,23.0 48.0,14.5 72.0,7.3 96.0,4.8 120.0,0.0"/></svg></td>
+            <td><span style="color:#28a745;font-weight:bold">↑ 27.3%</span></td>
+            <td>
+                <div style="background:#e2e8f0;border-radius:10px;height:20px;overflow:hidden">
+                    <div style="background:linear-gradient(90deg,#667eea,#764ba2);height:100%;width:26.9%;border-radius:10px;min-width:2%"></div>
+                </div>
+                <div style="font-size:0.8em;text-align:center;margin-top:2px">26.9%</div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>3</strong></td>
+            <td>
+                <div style="font-weight:600;color:#2d3748">lazada.vn</div>
+                <div style="font-size:0.8em;color:#718096">E-commerce</div>
+            </td>
+            <td><strong>8.8M</strong></td>
+            <td>567.9K</td>
+            <td>1.9M</td>
+            <td>8.9M</td>
+            <td>19.2K</td>
+            <td><span style="background:#ffc107;color:white;padding:3px 10px;border-radius:12px;font-weight:bold">76</span></td>
+            <td style="text-align:center"><svg width="120" height="40" viewBox="0 0 120 40"><polyline fill="none" stroke="#dc3545" stroke-width="2" points="0.0,0.0 24.0,11.4 48.0,20.0 72.0,31.4 96.0,37.1 120.0,40.0"/></svg></td>
+            <td><span style="color:#dc3545;font-weight:bold">↓ 13.7%</span></td>
+            <td>
+                <div style="background:#e2e8f0;border-radius:10px;height:20px;overflow:hidden">
+                    <div style="background:linear-gradient(90deg,#667eea,#764ba2);height:100%;width:15.3%;border-radius:10px;min-width:2%"></div>
+                </div>
+                <div style="font-size:0.8em;text-align:center;margin-top:2px">15.3%</div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>4</strong></td>
+            <td>
+                <div style="font-weight:600;color:#2d3748">cellphones.com.vn</div>
+                <div style="font-size:0.8em;color:#718096">Electronics Retail</div>
+            </td>
+            <td><strong>6.8M</strong></td>
+            <td>456.8K</td>
+            <td>890.0K</td>
+            <td>5.6M</td>
+            <td>12.3K</td>
+            <td><span style="background:#ffc107;color:white;padding:3px 10px;border-radius:12px;font-weight:bold">71</span></td>
+            <td style="text-align:center"><svg width="120" height="40" viewBox="0 0 120 40"><polyline fill="none" stroke="#28a745" stroke-width="2" points="0.0,40.0 24.0,32.5 48.0,22.5 72.0,15.0 96.0,7.5 120.0,0.0"/></svg></td>
+            <td><span style="color:#28a745;font-weight:bold">↑ 30.8%</span></td>
+            <td>
+                <div style="background:#e2e8f0;border-radius:10px;height:20px;overflow:hidden">
+                    <div style="background:linear-gradient(90deg,#667eea,#764ba2);height:100%;width:11.8%;border-radius:10px;min-width:2%"></div>
+                </div>
+                <div style="font-size:0.8em;text-align:center;margin-top:2px">11.8%</div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>5</strong></td>
+            <td>
+                <div style="font-weight:600;color:#2d3748">sendo.vn</div>
+                <div style="font-size:0.8em;color:#718096">E-commerce</div>
+            </td>
+            <td><strong>3.5M</strong></td>
+            <td>234.6K</td>
+            <td>450.0K</td>
+            <td>3.2M</td>
+            <td>8.7K</td>
+            <td><span style="background:#dc3545;color:white;padding:3px 10px;border-radius:12px;font-weight:bold">62</span></td>
+            <td style="text-align:center"><svg width="120" height="40" viewBox="0 0 120 40"><polyline fill="none" stroke="#dc3545" stroke-width="2" points="0.0,0.0 24.0,12.0 48.0,24.0 72.0,32.0 96.0,40.0 120.0,40.0"/></svg></td>
+            <td><span style="color:#dc3545;font-weight:bold">↓ 22.2%</span></td>
+            <td>
+                <div style="background:#e2e8f0;border-radius:10px;height:20px;overflow:hidden">
+                    <div style="background:linear-gradient(90deg,#667eea,#764ba2);height:100%;width:6.0%;border-radius:10px;min-width:2%"></div>
+                </div>
+                <div style="font-size:0.8em;text-align:center;margin-top:2px">6.0%</div>
+            </td>
+        </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- TRAFFIC COMPARISON -->
+        <div class="section" style="background:#f8f9fa">
+            <h2>So Sánh Organic Traffic</h2>
+            <p style="color:#718096;margin-bottom:20px">Biểu đồ so sánh lượng traffic organic giữa các đối thủ</p>
+            
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">shopee.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#667eea;height:100%;width:100.0%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    22.9M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">tiki.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#764ba2;height:100%;width:67.4%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    15.4M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">lazada.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#f093fb;height:100%;width:38.2%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    8.8M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">cellphones.com.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#4fd1c5;height:100%;width:29.6%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    6.8M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">sendo.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#fc8181;height:100%;width:15.1%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    3.5M
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- BACKLINKS COMPARISON -->
+        <div class="section">
+            <h2>So Sánh Hồ Sơ Backlinks</h2>
+            <p style="color:#718096;margin-bottom:20px">Tổng số backlinks của từng domain</p>
+            
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">shopee.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#667eea;height:100%;width:100.0%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    25.8M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">tiki.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#764ba2;height:100%;width:48.4%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    12.5M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">lazada.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#f093fb;height:100%;width:34.5%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    8.9M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">cellphones.com.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#4fd1c5;height:100%;width:21.7%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    5.6M
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;margin:10px 0;gap:10px">
+            <div style="width:150px;text-align:right;font-weight:600;color:#4a5568;font-size:0.9em">sendo.vn</div>
+            <div style="flex:1;background:#e2e8f0;border-radius:8px;height:35px;overflow:hidden">
+                <div style="background:#fc8181;height:100%;width:12.4%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:white;font-weight:bold;font-size:0.85em;min-width:80px">
+                    3.2M
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- TOP KEYWORDS -->
+        <div class="section" style="background:#f8f9fa">
+            <h2>Top Keywords Theo Domain</h2>
+            <p style="color:#718096;margin-bottom:20px">Các từ khóa organic hàng đầu của top 3 domain</p>
+            
+        <div style="margin-bottom:20px;padding:15px;background:#f7fafc;border-radius:8px;border-left:4px solid #667eea">
+            <h4 style="color:#2d3748;margin-bottom:8px">shopee.vn</h4>
+            <div><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">shopee</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">mã giảm giá</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">flash sale</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">mua online</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">freeship</span></div>
+        </div>
+        <div style="margin-bottom:20px;padding:15px;background:#f7fafc;border-radius:8px;border-left:4px solid #667eea">
+            <h4 style="color:#2d3748;margin-bottom:8px">tiki.vn</h4>
+            <div><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">mua sắm online</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">tiki</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">điện thoại giá rẻ</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">laptop</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">sách online</span></div>
+        </div>
+        <div style="margin-bottom:20px;padding:15px;background:#f7fafc;border-radius:8px;border-left:4px solid #667eea">
+            <h4 style="color:#2d3748;margin-bottom:8px">lazada.vn</h4>
+            <div><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">lazada</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">khuyến mãi</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">điện tử</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">thời trang</span><span style="display:inline-block;background:#edf2f7;color:#4a5568;padding:4px 12px;border-radius:15px;margin:3px;font-size:0.85em">đồ gia dụng</span></div>
+        </div>
+        </div>
+
+        <!-- INSIGHTS -->
+        <div class="section">
+            <h2>Nhận Xét & Phân Tích</h2>
+
+            <div class="insight-box">
+                <h4>🏆 Domain dẫn đầu: shopee.vn</h4>
+                <p>shopee.vn đang dẫn đầu với 22,890,000 lượt organic traffic/tháng,
+                chiếm 40.0% tổng traffic trong nhóm đối thủ.
+                Domain Authority đạt 88/100 với 45,670 referring domains.</p>
+            </div>
+
+            <div class="insight-box" style="border-left-color:#667eea;background:linear-gradient(135deg,#ebf4ff,#e8e8ff)">
+                <h4>📈 Xu hướng tăng trưởng</h4>
+                <p>• <strong>shopee.vn</strong>: tăng 23.8% trong 6 tháng qua<br>• <strong>tiki.vn</strong>: tăng 27.3% trong 6 tháng qua<br>• <strong>lazada.vn</strong>: giảm 13.7% trong 6 tháng qua<br>• <strong>cellphones.com.vn</strong>: tăng 30.8% trong 6 tháng qua<br>• <strong>sendo.vn</strong>: giảm 22.2% trong 6 tháng qua</p>
+            </div>
+
+            <div class="insight-box" style="border-left-color:#fc8181;background:linear-gradient(135deg,#fff5f5,#ffe8e8)">
+                <h4>⚠️ Cần lưu ý</h4>
+                <p>• <strong>lazada.vn</strong> đang có xu hướng giảm traffic (13.7%)<br>• <strong>sendo.vn</strong> đang có xu hướng giảm traffic (22.2%)</p>
+            </div>
+
+            <div class="insight-box" style="border-left-color:#764ba2;background:linear-gradient(135deg,#faf5ff,#f0e6ff)">
+                <h4>💡 Đề xuất chiến lược</h4>
+                <p>
+                    • Tập trung xây dựng backlinks chất lượng từ các referring domains uy tín<br>
+                    • Nghiên cứu keyword gap giữa domain của bạn và shopee.vn để tìm cơ hội<br>
+                    • Theo dõi sát xu hướng traffic hàng tháng để phát hiện sớm thay đổi thuật toán<br>
+                    • Phân tích content strategy của top 3 đối thủ để học hỏi nội dung hiệu quả
+                </p>
+            </div>
+        </div>
+
+        <!-- DETAILED METRICS TABLE -->
+        <div class="section" style="background:#f8f9fa">
+            <h2>Bảng Thống Kê Chi Tiết</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chỉ số</th>
+                        <th style="text-align:center">shopee.vn</th><th style="text-align:center">tiki.vn</th><th style="text-align:center">lazada.vn</th><th style="text-align:center">cellphones.com.vn</th><th style="text-align:center">sendo.vn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Organic Traffic</strong></td>
+                        <td style="text-align:center">22,890,000</td><td style="text-align:center">15,420,000</td><td style="text-align:center">8,750,000</td><td style="text-align:center">6,780,000</td><td style="text-align:center">3,450,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Organic Keywords</strong></td>
+                        <td style="text-align:center">1,234,560</td><td style="text-align:center">892,340</td><td style="text-align:center">567,890</td><td style="text-align:center">456,780</td><td style="text-align:center">234,560</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paid Traffic</strong></td>
+                        <td style="text-align:center">5,670,000</td><td style="text-align:center">2,150,000</td><td style="text-align:center">1,890,000</td><td style="text-align:center">890,000</td><td style="text-align:center">450,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paid Keywords</strong></td>
+                        <td style="text-align:center">89,120</td><td style="text-align:center">45,230</td><td style="text-align:center">34,560</td><td style="text-align:center">23,450</td><td style="text-align:center">12,340</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backlinks</strong></td>
+                        <td style="text-align:center">25,800,000</td><td style="text-align:center">12,500,000</td><td style="text-align:center">8,900,000</td><td style="text-align:center">5,600,000</td><td style="text-align:center">3,200,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Referring Domains</strong></td>
+                        <td style="text-align:center">45,670</td><td style="text-align:center">28,450</td><td style="text-align:center">19,230</td><td style="text-align:center">12,340</td><td style="text-align:center">8,670</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Domain Authority</strong></td>
+                        <td style="text-align:center"><strong>88</strong></td><td style="text-align:center"><strong>82</strong></td><td style="text-align:center"><strong>76</strong></td><td style="text-align:center"><strong>71</strong></td><td style="text-align:center"><strong>62</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Traffic Cost (USD)</strong></td>
+                        <td style="text-align:center">$15,400,000</td><td style="text-align:center">$8,250,000</td><td style="text-align:center">$5,120,000</td><td style="text-align:center">$3,450,000</td><td style="text-align:center">$1,890,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>📊 Báo cáo được tạo tự động bởi <strong>Competitor Checker Skill</strong> | Ngày: 25/03/2026 21:04</p>
+            <p style="margin-top:8px">Dữ liệu tham khảo từ Semrush & Ahrefs | <a href="https://github.com/theanh1999/demo_github">GitHub Repository</a></p>
+        </div>
+    </div>
+</body>
+</html>
